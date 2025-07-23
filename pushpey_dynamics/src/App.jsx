@@ -17,7 +17,7 @@ import Dashboard from './pages/Dashboard';
 
 import ProjectTatva from './pages/ProjectTatva';
 import BookCollector from './pages/Bookcollector';
-import  SmartLightSet from './pages/SmartlightSet';
+import  SmartLightSet from './pages/Smartlightset';
 import Bagtagpro from './pages/Bagtagpro';
 import EcoPackReturn from "./pages/EcoPackReturn";
 import QuickCircuitHub from "./pages/QuickCircuitHub";
