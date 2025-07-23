@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import qrcode from '../assets/image/qr-code.jpeg';
-import BackButton from './BackButton'; 
+import BackButton from './BackButton';
+
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Donation = () => {
   const [project, setProject] = useState('');
@@ -11,7 +13,7 @@ const Donation = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/donation', {
+      const res = await axios.post(`${BASE_URL}/api/donation`, {
         project,
         message,
       });

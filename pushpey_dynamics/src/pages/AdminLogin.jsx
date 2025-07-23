@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import BackButton from '../components/BackButton';
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 function AdminLogin({ setLoggedIn }) {
   const [email, setEmail] = useState('');
@@ -12,7 +13,7 @@ function AdminLogin({ setLoggedIn }) {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/login', {
+      const res = await axios.post(`${ BASE_URL}/api/login`, {
         email,
         password
       }, {

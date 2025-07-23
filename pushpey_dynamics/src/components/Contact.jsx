@@ -3,6 +3,8 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import BackButton from './BackButton'; 
 
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 function Contact() {
   const [formData, setFormData] = useState({
     name: "",
@@ -17,7 +19,7 @@ function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/contact", formData);
+      const res = await axios.post(`${ BASE_URL }/api/contact`, formData) ;
       alert("Message sent successfully!");
       setFormData({ name: "", email: "", message: "" });
     } catch (err) {
