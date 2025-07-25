@@ -12,8 +12,20 @@ connectDB();
 
 const app = express();
 
+// ✅ Proper CORS setup for localhost + deployed site
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://pushpeydynamics.vercel.app',
+];
+
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
 }));
 
@@ -25,7 +37,6 @@ app.use('/api', authRoutes);
 // ✅ protected routes
 app.use('/api/contact', contactRoutes);     // 🔓 public
 app.use('/api/donation', donationRoutes);
-
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
